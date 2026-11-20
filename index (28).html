@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corridas | Assessoria Thelio Tri</title>
+<style>
+:root{--bg:#0d0d0d;--card:#1a1a17;--ink:#f3f0e6;--muted:#a79f8b;--line:#3d3718;--accent:#f5b800;--accent-ink:#111}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo img{height:46px;width:auto}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Trebuchet MS",Verdana,sans-serif}
+a{color:inherit}
+header{background:#000;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:8px}
+header b{font:400 27px/1 Impact,"Arial Narrow",sans-serif;letter-spacing:1.5px;color:var(--accent);text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0 0 6px rgba(245,184,0,.35)}
+nav a{margin-left:16px;text-decoration:none;font-weight:700}
+main{max-width:960px;margin:0 auto;padding:24px 20px 60px}
+h1,h2,h3{font-family:Impact,"Arial Narrow",sans-serif;font-weight:400;letter-spacing:.3px;margin:0 0 10px}
+h1{font-size:clamp(34px,7vw,56px);line-height:1}
+.lead{color:var(--muted);max-width:52ch;margin:0 0 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}
+.ev{background:var(--card);border:1px solid var(--line);text-decoration:none;display:block}
+.flyer{aspect-ratio:2/3;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;color:#fff;background-size:cover;background-position:center}
+.fw{overflow:hidden}.flyer{transition:transform .35s ease;will-change:transform}.ev:hover .flyer,.fw:hover .flyer{transform:scale(1.06)}.ev{transition:border-color .25s}.ev:hover{border-color:var(--accent)}
+.flyer.sem{position:relative;overflow:hidden}.flyer.sem>span{position:relative;z-index:2;text-shadow:0 2px 6px #000}
+.fita{position:absolute;left:-40%;width:180%;height:34px;background:var(--accent);color:#111;overflow:hidden;display:flex;align-items:center;z-index:1;box-shadow:0 4px 10px rgba(0,0,0,.55)}
+.fita::before,.fita::after{content:"";position:absolute;left:0;right:0;height:5px;background:repeating-linear-gradient(-45deg,#111 0 8px,var(--accent) 8px 16px)}
+.fita::before{top:0}.fita::after{bottom:0}
+.fita .fm{display:flex;width:max-content;animation:fita 14s linear infinite;font:400 17px/1 Impact,"Arial Narrow",sans-serif;letter-spacing:2px;white-space:nowrap}
+.fita .fm span{padding-right:0}
+.f1{top:34%;transform:rotate(-16deg)}.f2{top:48%;transform:rotate(12deg)}.f2 .fm{animation-direction:reverse;animation-duration:18s}
+@keyframes fita{to{transform:translateX(-50%)}}
+.flyer .d{font:400 44px/1 Impact,sans-serif}
+.flyer .n{font-weight:700}
+.ev .meta{padding:12px 14px;font-size:14px}
+.ev .meta strong{display:block;font-size:16px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);border:0;padding:12px 22px;font:700 15px inherit;font-family:inherit;cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.two{display:grid;grid-template-columns:minmax(0,400px) 1fr;gap:28px;align-items:start}
+@media(max-width:720px){.two{grid-template-columns:1fr}}
+dl{margin:0;display:grid;grid-template-columns:110px 1fr;gap:8px 12px;border-top:1px dashed var(--line);padding-top:12px}
+dt{color:var(--muted)}dd{margin:0;font-weight:700}
+.box{background:var(--card);border:1px solid var(--line);padding:18px;margin-top:20px}
+.pk{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line);cursor:pointer}
+.pk input{margin-right:10px}
+label{display:block;font-weight:700;font-size:14px;margin:14px 0 4px}
+input[type=text],input[type=email],input[type=password],select{width:100%;padding:11px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+.pix{font:700 17px/1.3 monospace;word-break:break-all;background:var(--bg);border:1px dashed var(--ink);padding:12px;margin:10px 0}
+.total{display:flex;justify-content:space-between;font-size:20px;font-weight:800;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+.wrap{overflow-x:auto}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin:12px 0}
+.count div{background:var(--bg);border:1px solid var(--line);padding:10px 2px}
+.count b{display:block;font:400 30px/1 Impact,sans-serif;color:var(--accent)}
+.count small{color:var(--muted);font-size:11px}
+.cd{padding:10px 12px;background:#000;border-bottom:1px solid var(--line);text-align:center;min-height:86px}.cd>small{display:block;color:var(--accent);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.5px}.cd .count{margin:6px 0 0;gap:6px}.cd .count div{padding:6px 2px}.cd .count b{font-size:24px}
+.comp dl{grid-template-columns:130px 1fr}.pend{border-color:var(--accent)}
+@media print{header,.back,.noprint,form,.lead{display:none!important}body,main{background:#fff!important;color:#000!important}.box{background:#fff!important;color:#000!important;border:1px solid #000!important;break-inside:avoid}dt,.warn{color:#333!important}h1{color:#000}}
+.btn.sm{padding:6px 12px;font-size:13px}
+.back{display:inline-block;margin-bottom:14px;font-weight:700}
+.warn{font-size:13px;color:var(--muted);margin-top:10px}
+.st{display:inline-block;padding:3px 10px;font-weight:800;font-size:13px;letter-spacing:.4px;text-transform:uppercase}.st.p{background:var(--accent);color:#111}.st.ok{background:#1f8f4a;color:#fff}.rec{margin-top:20px}@media print{.st{border:1px solid #000;color:#000!important;background:#fff!important}}
+</style>
+</head>
+<body>
+<header><a class="logo" href="#"><img src="logo.jpg" alt=""><b id="brand"></b></a><nav><a href="#">Eventos</a><a href="#comprovante">Comprovante</a></nav></header>
+<main id="app"></main>
+
+<script>
+/* ============ 1) EDITE AQUI ============ */
+const CONFIG = {
+  nome: "Assessoria Thelio Tri",
+  whatsapp: "5591986451840",          // DDI+DDD+número, só dígitos
+  pixChave: "Thtrindade12@gmail.com",
+  pixBanco: "Bradesco",
+  pixNome: "Thelio Trindade de Moraes",
+  urlPlanilha: "https://script.google.com/macros/s/AKfycbyKG6LWZ2d_zJkDMbXEtV3TRe6iIYV8uubtRV71HcTQKwQFrLSKAQElHxTFuDUKQwOq/exec",  // URL do app da Web do Google Apps Script (termina em /exec)
+  modoTeste: false                    // false = formulário só aparece dentro do prazo de inscrição (versão final). true = libera tudo, só para testar
+};
+/* Opcional em cada evento: pixChave, pixBanco, pixNome e whatsapp. Se faltar, usa os dados do CONFIG acima. */
+/* flyer: coloque a imagem na mesma pasta do index.html e informe só o nome do arquivo. Sem imagem, aparece um bloco colorido. */
+const EVENTOS = [
+  {id:"corrida-do-bem-2026", nome:"Corrida do Bem: Alimentando Esperança", data:"2026-12-20", hora:"06:00", concentracao:"05:30", local:"Praça Matriz", org:"Assessoria Thelio Tri e diRoma Magazine", abre:"2026-11-19T00:00:00-03:00", fecha:"2026-12-15T23:59:00-03:00", flyer:"flyer-corrida-do-bem.jpg", ratio:"4/5", cor:"#5a0f10",
+   sobre:"Corrida solidária de 3 km. A inscrição custa R$ 60,00 mais 2 kg de alimentos não perecíveis. O kit inclui camisa, medalha, carbo gel e número do peito.",
+   categorias:["3 km Masculino","3 km Feminino"],
+   pacotes:[{n:"Kit completo",p:60,d:"Camisa, medalha, carbo gel e número do peito (+ 2 kg de alimentos não perecíveis)"}]},
+  {id:"niver-rafa", nome:"Niver do Rafa", data:"2027-01-24", local:"Guarumã", cor:"#2a2410"},
+  {id:"niver-thelio-tri", nome:"Niver Thelio Tri", data:"2027-04-18", hora:"06:00", concentracao:"05:30", local:"Praça Matriz, Acará", org:"Assessoria Thelio Tri", abre:"2026-12-01T08:00:00-03:00", fecha:"2027-04-16T23:59:00-03:00", flyer:"flyer-niver-thelio-tri.png", cor:"#2a2410",
+   premiacao:"5 primeiros da classificação geral e Top 10 da categoria feminina, com dinheiro e brindes.",
+   premios:{geral:["R$ 300","R$ 200","R$ 100","R$ 50","R$ 50"], top10:["R$ 100","R$ 100","R$ 100","R$ 100","R$ 100","Brinde","Brinde","Brinde","Brinde","Brinde"]},
+   sobre:"Corrida de 5 km em comemoração ao aniversário do Thelio Tri. O kit inclui camisa, medalha e carbo gel.",
+   categorias:["5 km Masculino","5 km Feminino"],
+   pacotes:[{n:"Kit completo",p:80,d:"Camisa, medalha e carbo gel"}]},
+  {id:"corrida-kids", nome:"Corrida Kids", data:"2027-07-11", hora:"18:00", concentracao:"17:30", local:"Praça Matriz", abre:"2027-05-01T00:00:00-03:00", fecha:"2027-06-30T23:59:00-03:00", flyer:"flyer-corrida-kids.png", cor:"#2a2410", kids:true,
+   sobre:"Corrida infantil de 1 km. Escolha o kit pai e filho (duas camisas) ou o kit só da criança (uma camisa). O kit inclui camisa, medalha e lanche.",
+   categorias:["1 km Kids"],
+   pacotes:[{n:"Pai e filho",p:100,d:"Camisa do pai e da criança, medalha e lanche",pai:true},{n:"Só a criança",p:60,d:"Camisa da criança, medalha e lanche"}]},
+  {id:"corrida-verao", nome:"Corrida de Verão", data:"2027-07-25", hora:"06:00", concentracao:"05:00", local:"Praça Matriz", abre:"2027-05-01T00:00:00-03:00", fecha:"2027-07-10T23:59:00-03:00", flyer:"flyer-corrida-verao.png", cor:"#2a2410",
+   premiacao:"Top 5 masculino e Top 5 feminino, em dinheiro.",
+   premios:{blocos:[{t:"Top 5 masculino",l:["R$ 300","R$ 200","R$ 100","R$ 50","R$ 50"]},{t:"Top 5 feminino",l:["R$ 300","R$ 200","R$ 100","R$ 50","R$ 50"]}]},
+   sobre:"Corrida de 5 km. O kit inclui camisa, medalha e número de peito.",
+   categorias:["5 km Masculino","5 km Feminino"],
+   pacotes:[{n:"Kit completo",p:80,d:"Camisa, medalha e número de peito"}]},
+  {id:"corrida-mata", nome:"Corrida da Mata", data:"2027-09-12", hora:"06:00", concentracao:"05:30", local:"Subestação", cor:"#2a2410",
+   sobre:"Corrida de 5 km. O kit inclui camisa, medalha e café da manhã.",
+   categorias:["5 km Masculino","5 km Feminino"],
+   pacotes:[{n:"Kit completo",p:60,d:"Camisa, medalha e café da manhã"}]},
+  {id:"bday-run-arielly", nome:"Bday Run da Arielly", data:"2027-10-03", hora:"06:00", concentracao:"05:30", local:"Praça Matriz", org:"Arielly de Nazaré de Sousa Costa", abre:"2027-07-01T00:00:00-03:00", fecha:"2027-09-20T23:59:00-03:00", flyer:"flyer-bday-run-arielly.jpg", cor:"#5a1040",
+   pixChave:"01880871254", pixNome:"Arielly De Nazare De Sousa Costa", pixBanco:"COOP SICREDI SUDESTE MT/PA", whatsapp:"5591996251370",
+   sobre:"Corrida de 5 km para comemorar o aniversário da Arielly. O kit inclui ecobag, camisa, medalha e brindes, e haverá sorteio de brindes.",
+   categorias:["5 km Masculino","5 km Feminino"],
+   pacotes:[{n:"Kit completo",p:80,d:"Ecobag, camisa, medalha e brindes (com sorteio de brindes)"}]},
+  {id:"reis-rainhas", nome:"2ª Edição Corrida Reis e Rainhas", data:"2027-11-07", hora:"06:30", concentracao:"05:30", local:"Letreiro Eu Amo Acará", cor:"#2a2410",
+   premiacao:"Premiação geral e premiação local, em dinheiro.",
+   premios:{blocos:[{t:"Premiação geral",l:["R$ 800","R$ 500","R$ 250","R$ 100","R$ 50"]},{t:"Premiação local",l:["R$ 500","R$ 300","R$ 200","R$ 100","R$ 50"]}]},
+   sobre:"2ª edição da Corrida Reis e Rainhas, com 5 km. O kit inclui camisa, medalha e carbo gel.",
+   categorias:["5 km Masculino","5 km Feminino"],
+   pacotes:[{n:"Kit completo",p:100,d:"Camisa, medalha e carbo gel"}]},
+  {id:"corrida-bem", nome:"Corrida do Bem", data:"2027-12-12", local:"Acará", cor:"#2a2410"}
+];
+const $=s=>document.querySelector(s), app=$("#app");
+const brl=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const dt=d=>new Date(d+"T12:00:00").toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+const sh=d=>new Date(d+"T12:00:00").toLocaleDateString("pt-BR",{day:"2-digit",month:"short"}).replace(".","");
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+$("#brand").textContent=CONFIG.nome;
+
+function flyer(e){const bg=(e.flyer?`background-image:url('${e.flyer}')`:`background:${e.cor}`)+(e.ratio?`;aspect-ratio:${e.ratio}`:"");
+  const t="EM BREVE ◆ ".repeat(12),fita=c=>`<div class="fita ${c}" aria-hidden="true"><div class="fm"><span>${t}</span><span>${t}</span></div></div>`;
+  return `<div class="fw"><div class="flyer${e.flyer?"":" sem"}" style="${bg}">${e.flyer?"":`${fita("f1")}${fita("f2")}<span class="d">${sh(e.data)}</span><span class="n">${esc(e.nome)}</span>`}</div></div>`}
+
+function home(){
+  app.innerHTML=`<h1>Próximas corridas</h1><p class="lead">Escolha a prova, veja os detalhes e faça sua inscrição em poucos minutos.</p>
+  <div class="grid">${EVENTOS.map(e=>`<a class="ev" href="#evento/${e.id}"><div class="cd" data-id="${e.id}">${cd(e)}</div>${flyer(e)}<div class="meta"><strong>${esc(e.nome)}</strong>${dt(e.data)}<br>${esc(e.local)}${e.pacotes?"":"<br><small>Detalhes em breve</small>"}</div></a>`).join("")}</div>`;
+  clearInterval(window._t);
+  window._t=setInterval(()=>document.querySelectorAll(".cd[data-id]").forEach(el=>{const e=EVENTOS.find(x=>x.id===el.dataset.id);if(e)el.innerHTML=cd(e)}),1000);
+}
+
+function premios(p){const t=(tit,l)=>`<div><h3>${tit}</h3><table>${l.map((v,i)=>`<tr><td>${i+1}º lugar</td><td><b>${v}</b></td></tr>`).join("")}</table></div>`;
+  const bl=p.blocos||[{t:"5 primeiros (geral)",l:p.geral},{t:"Top 10 feminino",l:p.top10}];
+  return `<div class="box"><h2>Premiação</h2><div class="row">${bl.map(b=>t(b.t,b.l)).join("")}</div></div>`}
+
+function evento(id){
+  const e=EVENTOS.find(x=>x.id===id); if(!e) return home();
+  if(!e.pacotes){app.innerHTML=`<a class="back" href="#">‹ Todos os eventos</a><div class="two"><div>${flyer(e)}</div><div><h1>${esc(e.nome)}</h1><dl><dt>Data</dt><dd>${dt(e.data)}</dd><dt>Local</dt><dd>${esc(e.local)}</dd></dl><p>Flyer, valores e inscrições serão divulgados em breve.</p></div></div>`;return}
+  app.innerHTML=`<a class="back" href="#">‹ Todos os eventos</a>
+  <div class="two"><div>${flyer(e)}</div><div>
+    <h1>${esc(e.nome)}</h1>
+    <dl><dt>Data</dt><dd>${dt(e.data)}</dd>${e.concentracao?`<dt>Concentração</dt><dd>${esc(e.concentracao)}</dd>`:""}${e.hora?`<dt>Largada</dt><dd>${esc(e.hora)}</dd>`:""}<dt>Local</dt><dd>${esc(e.local)}</dd>${e.org?`<dt>Organização</dt><dd>${esc(e.org)}</dd>`:""}${e.premiacao?`<dt>Premiação</dt><dd>${esc(e.premiacao)}</dd>`:""}</dl>
+    <p>${esc(e.sobre)}</p></div></div>
+  ${e.premios?premios(e.premios):""}
+  <form class="box" id="f" novalidate><h2>Inscrição</h2>
+    <div class="row"><div><label for="nome">${e.kids?"Nome da criança":"Nome"}</label><input type="text" id="nome" required></div><div><label for="sob">${e.kids?"Sobrenome da criança":"Sobrenome"}</label><input type="text" id="sob" required></div></div>
+    ${e.kids?`<label for="resp">Nome do pai ou responsável</label><input type="text" id="resp" required>`:""}<label for="email">${e.kids?"E-mail do pai ou responsável":"E-mail"}</label><input type="email" id="email" required>
+    <div class="row"><div><label for="cpf">${e.kids?"CPF do pai ou responsável":"CPF"}</label><input type="text" id="cpf" inputmode="numeric" required></div><div><label for="cel">${e.kids?"Celular do responsável com DDD":"Celular com DDD"}</label><input type="text" id="cel" inputmode="tel" placeholder="91999998888" required></div></div>
+    <div class="row"><div><label for="gen">Gênero</label><select id="gen"><option>Masculino</option><option>Feminino</option></select></div>
+    <div><label for="cat">Categoria</label><select id="cat">${e.categorias.map(c=>`<option>${esc(c)}</option>`).join("")}</select></div></div>
+    ${e.kids?`<div class="row"><div><label for="camc">Camisa da criança</label><select id="camc">${[["2"],["4"],["6"],["8"],["10","9–10 anos"],["11","10–11 anos"],["12","11–12 anos"],["13","12–13 anos"],["14","13–14 anos"],["15","14–15 anos"],["16","15–16 anos"]].map(([v,a])=>`<option value="${v}">${v}${a?` (${a})`:""}</option>`).join("")}</select></div><div id="campw"><label for="camp">Camisa do pai</label><select id="camp">${["PP","P","M","G","GG"].map(t=>`<option>${t}</option>`).join("")}</select></div></div>`:`<label for="cam">Tamanho da camisa</label><select id="cam">${["PP","P","M","G","GG"].map(t=>`<option>${t}</option>`).join("")}</select>`}
+    <label>Pacote</label>${e.pacotes.map((p,i)=>`<label class="pk"><span><input type="radio" name="pk" value="${i}" ${i?"":"checked"}>${esc(p.n)}<br><small>${esc(p.d)}</small></span><b>${brl(p.p)}</b></label>`).join("")}
+    <div class="total"><span>Total</span><span id="tot"></span></div>
+    <p class="warn" id="err" role="alert"></p>
+    <button class="btn" type="submit">Finalizar inscrição</button></form>`;
+  const upd=()=>{const i=+document.querySelector("input[name=pk]:checked").value;$("#tot").textContent=brl(e.pacotes[i].p);if(e.kids)$("#campw").style.display=e.pacotes[i].pai?"":"none"};
+  app.querySelectorAll("input[name=pk]").forEach(r=>r.onchange=upd);upd();
+  $("#f").onsubmit=async ev=>{ev.preventDefault();
+    if(!CONFIG.modoTeste){const n=new Date();if(!e.abre||!e.fecha||n<new Date(e.abre)||n>=new Date(e.fecha)){$("#err").textContent="As inscrições não estão abertas no momento.";return}}
+    const v=id=>$("#"+id).value.trim(), cpf=v("cpf").replace(/\D/g,""), cel=v("cel").replace(/\D/g,"");
+    if(!v("nome")||!v("sob")||(e.kids&&!v("resp"))||!/.+@.+\..+/.test(v("email"))||cpf.length!==11||cel.length<10){$("#err").textContent="Preencha todos os campos. CPF com 11 dígitos e celular com DDD.";return}
+    if(!/^https:\/\/script\.google\.com\//.test(CONFIG.urlPlanilha)){$("#err").textContent="Inscrições ainda não configuradas. Avise o organizador.";return}
+    const p=e.pacotes[+document.querySelector("input[name=pk]:checked").value];
+    const cam=e.kids?"Criança: "+v("camc")+(p.pai?" | Pai: "+v("camp"):""):v("cam");const r={evento:e.nome,nome:v("nome")+" "+v("sob")+(e.kids?" (Resp.: "+v("resp")+")":""),responsavel:e.kids?v("resp"):"",email:v("email"),cpf,cel,genero:v("gen"),categoria:v("cat"),camisa:cam,pacote:p.n,valor:p.p,em:new Date().toLocaleString("pt-BR")};
+    const btn=ev.target.querySelector("button[type=submit]"),volta=m=>{$("#err").textContent=m;btn.disabled=false;btn.textContent="Finalizar inscrição"};
+    btn.disabled=true;btn.textContent="Enviando...";$("#err").textContent="";
+    try{
+      const res=await fetch(CONFIG.urlPlanilha,{method:"POST",body:JSON.stringify(r)});
+      const j=await res.json();
+      if(!j.ok){volta(j.erro||"Não foi possível registrar a inscrição.");return}r.numero=j.numero||"";
+    }catch(x){volta("Não foi possível enviar a inscrição. Verifique a internet e tente novamente.");return}
+    pagar(e,r);scrollTo(0,0)};
+  janela(e);
+}
+
+function falta(n,t){
+  let s=Math.max(0,Math.floor((t-n)/1000));
+  const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;
+  return [d,h,Math.floor(s/60),s%60];
+}
+function cd(e){
+  if(!e.abre||!e.fecha)return "<small>Inscrições em breve</small>";
+  const n=new Date(),ab=new Date(e.abre),fe=new Date(e.fecha);
+  if(n>=fe)return "<small>Inscrições encerradas</small>";
+  const antes=n<ab,v=falta(n,antes?ab:fe),nm=["dias","horas","min","seg"];
+  return `<small>${antes?"Inscrições abrem em":"Inscrições encerram em"}</small><div class="count">${v.map((x,i)=>`<div><b>${String(x).padStart(2,"0")}</b><small>${nm[i]}</small></div>`).join("")}</div>`;
+}
+function janela(e){
+  clearInterval(window._t);
+  if(!e.abre||!e.fecha){if(!CONFIG.modoTeste){const f0=$("#f"),b0=document.createElement("div");b0.className="box";b0.innerHTML="<h2>Inscrições em breve</h2><p>As datas de abertura das inscrições serão divulgadas em breve.</p>";f0.before(b0);f0.remove()}return}
+  const ab=new Date(e.abre),fe=new Date(e.fecha),f=$("#f"),box=document.createElement("div");
+  box.className="box";f.before(box);
+  const fmt=d=>d.toLocaleString("pt-BR",{dateStyle:"long",timeStyle:"short"});
+  let est=null;
+  const tick=()=>{
+    const n=new Date(),st=n<ab?"antes":n<fe?"aberta":"fim";
+    if(est&&st!==est){evento(e.id);return}
+    if(!est&&st!=="aberta"&&!CONFIG.modoTeste)f.remove();
+    est=st;
+    if(st==="fim"){box.innerHTML="<h2>Inscrições encerradas</h2><p>O prazo de inscrição desta corrida terminou.</p>";clearInterval(window._t);return}
+    const v=falta(n,st==="antes"?ab:fe),nm=["dias","horas","minutos","segundos"];
+    box.innerHTML=`<h2>${st==="antes"?"As inscrições abrem em":"As inscrições encerram em"}</h2>
+    <div class="count" role="timer">${v.map((x,i)=>`<div><b>${String(x).padStart(2,"0")}</b><small>${nm[i]}</small></div>`).join("")}</div>
+    <p class="warn">${st==="antes"?"Abertura: "+fmt(ab):"Encerramento: "+fmt(fe)}</p>`;
+  };
+  tick();window._t=setInterval(tick,1000);
+}
+
+function ligaCopiar(){document.querySelectorAll(".cp").forEach(b=>b.onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(b.dataset.k).then(()=>b.textContent="Chave copiada")})}
+
+/* Comprovante de inscrição: o mesmo cartão serve para "pendente" e "pago" */
+function recibo(i,cpf){
+  const ev=EVENTOS.find(x=>x.nome===i.evento)||{},pago=!!i.pago;
+  const C={pixChave:ev.pixChave||CONFIG.pixChave,pixBanco:ev.pixBanco||CONFIG.pixBanco,pixNome:ev.pixNome||CONFIG.pixNome,whatsapp:ev.whatsapp||CONFIG.whatsapp};
+  const valor=Number(i.valor)||0;
+  const msg=encodeURIComponent(`Olá! Segue o comprovante do PIX da inscrição de ${i.nome} na ${i.evento} (${i.categoria}, camisa ${i.camisa}, ${i.pacote} - ${brl(valor)}).`);
+  return `<div class="box comp rec ${pago?"":"pend"}"><h2>Comprovante de inscrição</h2>
+  <p><b>Nº ${esc(i.numero||"—")}</b> · <span class="st ${pago?"ok":"p"}">${pago?"Pagamento confirmado":"Pagamento pendente"}</span></p>
+  <dl><dt>Evento</dt><dd>${esc(i.evento)}</dd>${ev.data?`<dt>Data</dt><dd>${dt(ev.data)}</dd>${ev.hora?`<dt>Largada</dt><dd>${esc(ev.hora)}</dd>`:""}<dt>Local</dt><dd>${esc(ev.local)}</dd>`:""}
+  <dt>Participante</dt><dd>${esc(i.nome)}</dd><dt>CPF</dt><dd>***.${cpf.slice(3,6)}.${cpf.slice(6,9)}-**</dd>
+  <dt>Categoria</dt><dd>${esc(i.categoria)}</dd><dt>Camisa</dt><dd>${esc(i.camisa)}</dd><dt>Pacote</dt><dd>${esc(i.pacote)}</dd>
+  <dt>${pago?"Valor pago":"Valor a pagar"}</dt><dd>${brl(valor)}</dd><dt>Inscrição em</dt><dd>${esc(i.em)}</dd></dl>
+  ${pago
+   ?`<p class="warn">${esc(CONFIG.nome)} · Guarde este comprovante.</p><button class="btn noprint" onclick="print()">Baixar / imprimir (PDF)</button>`
+   :`<div class="noprint"><p>Sua inscrição está <b>registrada</b>, mas a vaga só é confirmada depois do pagamento. Pague com PIX e envie o comprovante para a organização.</p>
+     <div>Chave PIX</div><div class="pix">${esc(C.pixChave)}</div><div>Recebedor: <b>${esc(C.pixNome)}</b></div><div>Banco: <b>${esc(C.pixBanco)}</b></div><br>
+     <button class="btn alt cp" data-k="${esc(C.pixChave)}">Copiar chave PIX</button> <a class="btn" target="_blank" rel="noopener" href="https://wa.me/${C.whatsapp}?text=${msg}">Enviar comprovante no WhatsApp</a></div>`}
+  </div>`;
+}
+
+function pagar(e,r){
+  app.innerHTML=`<h1>Inscrição recebida</h1><p class="lead">${esc(r.nome)}, sua inscrição em ${esc(e.nome)} foi registrada. Falta só o pagamento para confirmar a vaga.</p>
+  ${recibo(r,r.cpf)}
+  <p class="warn">Para rever este comprovante depois, use <a href="#comprovante">Comprovante</a> com o seu CPF. Quando a organização confirmar o pagamento, ele passa a aparecer como pago.</p>
+  <p><a class="back" href="#">‹ Voltar aos eventos</a></p>`;
+  ligaCopiar();
+}
+
+function comprovante(){
+  app.innerHTML=`<a class="back" href="#">‹ Todos os eventos</a><h1>Comprovante de inscrição</h1><p class="lead">Escolha o evento e informe o CPF usado na inscrição. Você vê se a inscrição está com pagamento pendente ou confirmado.</p>
+  <form class="box noprint" id="cf" novalidate><label for="cev">Evento</label><select id="cev">${EVENTOS.filter(x=>x.pacotes).map(x=>`<option>${esc(x.nome)}</option>`).join("")}</select>
+  <label for="ccpf">CPF</label><input type="text" id="ccpf" inputmode="numeric" autocomplete="off" required>
+  <p class="warn" id="cerr" role="alert"></p><button class="btn" type="submit">Consultar</button></form><div id="cres"></div>`;
+  $("#cf").onsubmit=async ev=>{ev.preventDefault();
+    const cpf=$("#ccpf").value.replace(/\D/g,""),err=$("#cerr"),res=$("#cres");
+    res.innerHTML="";
+    if(cpf.length!==11){err.textContent="Informe o CPF com 11 dígitos.";return}
+    if(!/^https:\/\/script\.google\.com\//.test(CONFIG.urlPlanilha)){err.textContent="Consulta ainda não configurada. Avise o organizador.";return}
+    const btn=ev.target.querySelector("button[type=submit]");btn.disabled=true;btn.textContent="Consultando...";err.textContent="";
+    let j;
+    try{j=await (await fetch(CONFIG.urlPlanilha+"?acao=comprovante&evento="+encodeURIComponent($("#cev").value)+"&cpf="+cpf+"&t="+Date.now())).json()}
+    catch(x){err.textContent="Não foi possível consultar. Verifique a internet e tente novamente.";btn.disabled=false;btn.textContent="Consultar";return}
+    btn.disabled=false;btn.textContent="Consultar";
+    if(!j.ok){err.textContent=j.erro||"Não foi possível consultar.";return}
+    if(!j.itens||!j.itens.length){err.textContent="Nenhuma inscrição encontrada com esse CPF neste evento.";return}
+    res.innerHTML=j.itens.map(i=>recibo(i,cpf)).join("");
+    ligaCopiar();
+  };
+}
+
+/* ============ ÁREA DO ORGANIZADOR (link próprio por evento) ============ */
+async function organizador(id,senha){
+  clearInterval(window._t);
+  const e=EVENTOS.find(x=>x.id===id);
+  if(!e){app.innerHTML='<h1>Evento não encontrado</h1>';return}
+  const pedeSenha=m=>{
+    app.innerHTML=`<h1>Área do organizador</h1><p class="lead">${esc(e.nome)}</p><form class="box" id="of"><label for="osenha">Senha do evento</label><input type="password" id="osenha" autocomplete="current-password" required><p class="warn" id="oerr" role="alert">${esc(m||"")}</p><button class="btn" type="submit">Entrar</button></form>`;
+    $("#of").onsubmit=ev=>{ev.preventDefault();organizador(id,$("#osenha").value.trim())};
+  };
+  if(!senha){pedeSenha();return}
+  if(!/^https:\/\/script\.google\.com\//.test(CONFIG.urlPlanilha)){app.innerHTML='<h1>Não configurado</h1>';return}
+  app.innerHTML=`<h1>${esc(e.nome)}</h1><p class="lead">Carregando inscritos...</p>`;
+  const q="id="+encodeURIComponent(id)+"&evento="+encodeURIComponent(e.nome)+"&senha="+encodeURIComponent(senha);
+  let itens=[],filtro="todos",busca="";
+  const carregar=async()=>{
+    let j;try{j=await (await fetch(CONFIG.urlPlanilha+"?acao=lista&"+q+"&t="+Date.now())).json()}
+    catch(x){app.innerHTML='<h1>'+esc(e.nome)+'</h1><p class="warn">Não foi possível carregar. Verifique a internet.</p><button class="btn" id="rec">Tentar de novo</button>';$("#rec").onclick=()=>organizador(id,senha);return false}
+    if(!j.ok){pedeSenha(j.erro||"Senha incorreta.");return false}
+    itens=j.itens||[];return true;
+  };
+  if(!(await carregar()))return;
+  app.innerHTML=`<a class="back" href="#">‹ Eventos</a><h1>${esc(e.nome)}</h1><p class="lead">Área do organizador. Marque o pagamento de cada inscrito.</p>
+  <div class="count" id="ores" style="grid-template-columns:repeat(4,1fr)"></div>
+  <div class="box"><div class="row"><div><label for="obusca">Buscar (nome, CPF, número)</label><input type="text" id="obusca"></div>
+  <div><label for="ofil">Mostrar</label><select id="ofil"><option value="todos">Todos</option><option value="pend">Pendentes</option><option value="pago">Pagos</option></select></div></div>
+  <p style="margin:12px 0 0"><button class="btn sm" id="oatu" type="button">Atualizar</button> <button class="btn sm alt" id="ocsv" type="button">Baixar CSV</button></p>
+  <p class="warn" id="omsg" role="status"></p><div class="wrap" id="olista"></div></div>`;
+  const dig=v=>String(v||"").replace(/\D/g,"");
+  const lista=()=>{
+    const pg=itens.filter(i=>i.pago),tot=pg.reduce((a,i)=>a+(Number(i.valor)||0),0);
+    $("#ores").innerHTML=[[itens.length,"inscritos"],[pg.length,"pagos"],[itens.length-pg.length,"pendentes"],[brl(tot),"recebido"]].map(([n,l])=>`<div><b style="font-size:${String(n).length>6?18:30}px">${n}</b><small>${l}</small></div>`).join("");
+    const b=busca.toLowerCase(),bd=dig(busca);
+    const v=itens.filter(i=>(filtro==="todos"||(filtro==="pago")===!!i.pago)&&(!b||String(i.nome).toLowerCase().includes(b)||String(i.numero).toLowerCase().includes(b)||(bd&&dig(i.cpf).includes(bd))));
+    $("#olista").innerHTML=v.length?`<table><thead><tr><th>Nº</th><th>Nome</th><th>CPF</th><th>Celular</th><th>Categoria</th><th>Camisa</th><th>Pacote</th><th>Valor</th><th>Pagamento</th></tr></thead><tbody>${v.map(i=>{const c=dig(i.cel);return `<tr><td>${esc(i.numero)}</td><td>${esc(i.nome)}<br><small>${esc(i.email)}</small></td><td>${esc(i.cpf)}</td><td>${c?`<a href="https://wa.me/${c.startsWith("55")?c:"55"+c}" target="_blank" rel="noopener">${esc(i.cel)}</a>`:""}</td><td>${esc(i.categoria)}</td><td>${esc(i.camisa)}</td><td>${esc(i.pacote)}</td><td>${brl(Number(i.valor)||0)}</td><td><span class="st ${i.pago?"ok":"p"}">${i.pago?"Pago":"Pendente"}</span><br><button class="btn sm ${i.pago?"alt":""}" data-n="${esc(i.numero)}" type="button" style="margin-top:6px">${i.pago?"Desmarcar":"Marcar pago"}</button></td></tr>`}).join("")}</tbody></table>`:"<p class=\"warn\">Nenhuma inscrição encontrada.</p>";
+    $("#olista").querySelectorAll("button[data-n]").forEach(bt=>bt.onclick=async()=>{
+      const it=itens.find(x=>x.numero===bt.dataset.n),novo=!it.pago;bt.disabled=true;$("#omsg").textContent="Salvando...";
+      try{const j=await (await fetch(CONFIG.urlPlanilha,{method:"POST",body:JSON.stringify({acao:"pago",id,evento:e.nome,senha,numero:it.numero,pago:novo})})).json();
+        if(!j.ok){$("#omsg").textContent=j.erro||"Não foi possível salvar.";bt.disabled=false;return}
+        it.pago=novo;$("#omsg").textContent="Salvo: "+it.nome+" — "+(novo?"pago":"pendente")+".";lista();
+      }catch(x){$("#omsg").textContent="Erro de conexão. Tente de novo.";bt.disabled=false}
+    });
+  };
+  $("#obusca").oninput=ev=>{busca=ev.target.value.trim();lista()};
+  $("#ofil").onchange=ev=>{filtro=ev.target.value;lista()};
+  $("#oatu").onclick=async()=>{$("#omsg").textContent="Atualizando...";if(await carregar()){$("#omsg").textContent="Atualizado.";lista()}};
+  $("#ocsv").onclick=()=>{
+    const cab=["Número","Inscrição em","Nome","Responsável","E-mail","CPF","Celular","Gênero","Categoria","Camisa","Pacote","Valor","Pago"];
+    const c=v=>'"'+String(v==null?"":v).replace(/"/g,'""')+'"';
+    const rows=itens.map(i=>[i.numero,i.em,i.nome,i.responsavel,i.email,i.cpf,i.cel,i.genero,i.categoria,i.camisa,i.pacote,i.valor,i.pago?"Sim":"Não"].map(c).join(";"));
+    const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+[cab.map(c).join(";")].concat(rows).join("\r\n")],{type:"text/csv;charset=utf-8"}));
+    a.download=id+"-inscritos.csv";a.click();URL.revokeObjectURL(a.href);
+  };
+  lista();
+}
+
+function route(){clearInterval(window._t);const h=location.hash.slice(1);
+  if(h.startsWith("organizador/")){const [,oid,...rs]=h.split("/");organizador(oid,decodeURIComponent(rs.join("/")))}else if(h.startsWith("evento/"))evento(h.slice(7));else if(h==="comprovante")comprovante();else home();}
+addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
